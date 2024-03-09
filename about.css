@@ -1,0 +1,78 @@
+.about-heading {
+    font-family: Calibri, Times, serif;
+    color: black;
+    font-size: 3rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    padding: 0.2rem 0;
+    margin: 0;
+}
+
+.instructors {
+    text-align: center;
+}
+
+.instructors h2 {
+    margin: 0;
+    padding: 8px 0;
+    font-size: 22px;
+}
+
+.instructors h3 {
+    margin: 0;
+    padding: 4px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.about-body {
+    text-align: center;
+}
+
+.team-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.team-member {
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.team-member h2 {
+    margin: 0;
+    padding: 6px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.team-member p {
+    margin: 2px 0;
+    font-size: 18px;
+}
+
+.team-member a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.team-member a:hover {
+    text-decoration: underline;
+}
+
+.left {
+    margin-right: auto;
+}
+
+.right {
+    margin-left: auto;
+}
