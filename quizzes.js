@@ -1,26 +1,26 @@
-fetch("./06_2_41_MoviesFromJSON.json")
+fetch("./quizzes.json")
 .then(response => response.json())
-.then(myMovies => loadMovies(myMovies));
+.then(myQuizzes => loadQuizzes(myQuizzes));
 
-function loadMovies(myMovies) {
+function loadQuizzes(myQuizzes) {
 
     // Find the element “col” in HTML
-    var CardMovie = document.getElementById("col");
+    var CardQuiz = document.getElementById("col");
     var checkboxes=[];
     var cards=[];
 
-    // Read every movie from the array
-    for (var i = 0; i < myMovies.movies.length; i++) {
+    // Read every quiz from the array
+    for (var i = 0; i < myQuizzes.quizzes.length; i++) {
 
-        let title = myMovies.movies[i].title;
-        let year = myMovies.movies[i].year;
-        let url = myMovies.movies[i].url;
+        let title = myQuizzes.quizzes[i].title;
+        let year = myQuizzes.quizzes[i].year;
+        let url = myQuizzes.quizzes[i].url;
 
         // create a new HTML div division
-        let AddCardMovie = document.createElement("div");
+        let AddCardQuiz = document.createElement("div");
 
         // add class = “col” to new division for Bootstrap
-        AddCardMovie.classList.add("col");
+        AddCardQuiz.classList.add("col");
 
         // create Bootstrap card
         let checkbox="checkbox"+i.toString();
@@ -37,7 +37,7 @@ function loadMovies(myMovies) {
             });
         });
 
-        AddCardMovie.innerHTML = `
+        AddCardQuiz.innerHTML = `
             <input type="checkbox" id=${checkbox} class="form-check-input" checked>
             <label for=${checkbox} class="form-check-label">Show Image ${i}</label>
 
@@ -56,7 +56,7 @@ function loadMovies(myMovies) {
             </div>
         `;
         // append new division
-        CardMovie.appendChild(AddCardMovie);
+        CardQuiz.appendChild(AddCardQuiz);
 
         let cbox=document.getElementById(checkbox);
         checkboxes.push(cbox);
