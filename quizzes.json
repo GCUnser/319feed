@@ -2,9 +2,9 @@
     "quizzes": [
         {
             "quizId": "1234",
-            "title": "Avengers",
-            "author": 2012,
-            "url": "https://freepngimg.com/thumb/avengers/5-2-avengers-png-picture.png"
+            "title": "Which HTML element are you most compatible with?",
+            "author": "Firstname Lastname",
+            "url": "https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
     ]
   }
