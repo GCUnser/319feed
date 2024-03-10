@@ -1,95 +1,126 @@
 {
     "quizzes": [
-        
         {
             "quizId": "0",
             "title": "Romance: Make a minestrone and we'll tell you who your Javascript method soulmate is",
             "descript": "Mother Italy loves her web designers",
-            
-            "question1":{
+            "question1": {
                 "question": "Choose an animal bone-based stock",
-                "answers": ["Chicken stock", "Beef stock", "Water (aka fish stock)"]
+                "answers": [
+                    "Chicken stock",
+                    "Beef stock",
+                    "Water (aka fish stock)"
+                ],
+                "imgUrl": "https://images.unsplash.com/photo-1607528933226-988ba46e9f14?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             },
-            "question2":{
+            "question2": {
                 "question": "Choose additional vegetables beyond the core inclusion of onion, garlic, celery, tomatoes, and carrots",
-                "answers": ["Zucchini", "Cabbage", "Kohlrabi"]
+                "answers": [
+                    "Zucchini",
+                    "Cabbage",
+                    "Kohlrabi"
+                ],
+                "imgUrl": "https:// images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             },
-            "question3":{
+            "question3": {
                 "question": "Choose a carb-based addition",
-                "answers": ["Rice", "Orzo pasta", "Diced potatoes"]
+                "answers": [
+                    "Rice",
+                    "Orzo pasta",
+                    "Diced potatoes"
+                ],
+                "imgUrl": "https:// images.unsplash.com/photo-1520806004693-db86ec088635?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FyYnN8ZW58MHwwfDB8fHwy"
             },
-
             "url": "https://images.unsplash.com/photo-1607528971899-2e89e6c0ec69?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c291cHxlbnwwfDB8MHx8fDA%3D"
         },
         {
             "quizId": "1",
             "title": "Personality: Pick your favorite number and we'll tell you what CSS selector you best embody",
             "descript": "01100001 01101101 01101111 01101110 01100111 00100000 01110101 01110011 ",
-
-            "question1":{
+            "question1": {
                 "question": "Pick a transcendental number",
-                "answers": ["π", "The paperfolding constant", "e^a if a is algebraic and non-zero, as proven by the Lindemann-Weierstrass theorem"]
+                "answers": [
+                    "π",
+                    "The paperfolding constant",
+                    "e^a if a is algebraic and non-zero, as proven by the Lindemann-Weierstrass theorem"
+                ],
+                "imgUrl": "https:// images.unsplash.com/photo-1502570149819-b2260483d302?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             },
-            "question2":{
+            "question2": {
                 "question": "Select a large number",
-                "answers": ["Rayo's number", "2^82589933, the largest known Mersenne prime", "Googol"]
+                "answers": [
+                    "Rayo's number",
+                    "2^82589933, the largest known Mersenne prime",
+                    "Googol"
+                ],
+                "imgUrl": "https:// images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             },
-            "question3":{
+            "question3": {
                 "question": "Choose an evil number",
-                "answers": ["0","108","66"]
+                "answers": [
+                    "0",
+                    "108",
+                    "66"
+                ],
+                "imgUrl": "https:// images.unsplash.com/photo-1624117987059-f1b8c83edfaa?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bnVtYmVyc3xlbnwwfDB8MHx8fDI%3D"
             },
-
             "url": "https://images.unsplash.com/photo-1529078155058-5d716f45d604?q=80&w=2768&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "quizId": "2",
             "title": "Trivia: Can You Solve the Ultimate Web-dev Trivia Challenge?",
             "descript": "Put your web development skills to the test with our interactive trivia challenge, and take your coding prowess to the limits!",
-
-            "question1":{
+            "question1": {
                 "question": "Which method in the Document Object Model (DOM) can be used to make a new element?",
-                "answers": ["document.createElement()",
-                "document.newElement()",
-                "document.addElement()",
-                "document.create()"],
+                "answers": [
+                    "document.createElement()",
+                    "document.newElement()",
+                    "document.addElement()",
+                    "document.create()"
+                ],
                 "answer": "document.createElement()"
             },
-            "question2":{
+            "question2": {
                 "question": "How do you write a comment in JavaScript?",
-                "answers": ["<!-- This is a comment -->",
-                "// This is a comment",
-                "'This is a comment",
-                "/* This is a comment */"],
+                "answers": [
+                    "<!-- This is a comment -->",
+                    "// This is a comment",
+                    "'This is a comment",
+                    "/* This is a comment */"
+                ],
                 "answer": "// This is a comment"
             },
-            "question3":{
+            "question3": {
                 "question": "In JavaScript, what is the result of trying to access an object property that does not exist?",
-                "answers": ["null",
-                "undefined",
-                "0",
-                "An error is thrown"],
+                "answers": [
+                    "null",
+                    "undefined",
+                    "0",
+                    "An error is thrown"
+                ],
                 "answer": "undefined"
             },
-            "question4":{
+            "question4": {
                 "question": "Which attribute is used to specify that an input field must be filled out before submitting the form?",
-                "answers": ["placeholder",
-                "required",
-                "validate",
-                "necessary"],
+                "answers": [
+                    "placeholder",
+                    "required",
+                    "validate",
+                    "necessary"
+                ],
                 "answer": "required"
             },
-            "question5":{
+            "question5": {
                 "question": "How do you specify an alternative text for an image, if the image cannot be displayed?",
-                "answers": ["Using the 'alt' attribute in the <img> tag",
-                "Using the 'description' attribute in the <img> tag",
-                "Placing the text inside the <img> tag",
-                "Using the 'src' attribute in the <img> tag"],
+                "answers": [
+                    "Using the 'alt' attribute in the <img> tag",
+                    "Using the 'description' attribute in the <img> tag",
+                    "Placing the text inside the <img> tag",
+                    "Using the 'src' attribute in the <img> tag"
+                ],
                 "answer": "Using the 'alt' attribute in the <img> tag"
             },
-
             "url": "https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
-
-        
     ]
-  }
+}

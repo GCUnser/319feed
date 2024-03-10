@@ -23,9 +23,16 @@ function loadQuiz(quiz) {
             const questionContainer = document.createElement("div");
             questionContainer.classList.add("question-container");
 
+            const questionImage = document.createElement("img");
+            questionImage.classList.add("question-image");
+            questionImage.src = questionObj.imgUrl; 
+            questionImage.alt = "Question image";
+
             const questionTitle = document.createElement("h2");
             questionTitle.classList.add("question");
             questionTitle.innerText = questionObj.question;
+
+            questionContainer.appendChild(questionImage)
             questionContainer.appendChild(questionTitle);
 
             const answersDiv = document.createElement("div");
