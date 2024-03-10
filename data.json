@@ -8,21 +8,15 @@
             
             "question1":{
                 "question": "Choose an animal bone-based stock",
-                "answer1": "Chicken stock",
-                "answer2": "Beef stock",
-                "answer3": "Water (aka fish stock)"
+                "answers": ["Chicken stock", "Beef stock", "Water (aka fish stock)"]
             },
             "question2":{
                 "question": "Choose additional vegetables beyond the core inclusion of onion, garlic, celery, tomatoes, and carrots",
-                "answer1": "Zucchini",
-                "answer2": "Cabbage",
-                "answer3": "Kohlrabi"
+                "answers": ["Zucchini", "Cabbage", "Kohlrabi"]
             },
             "question3":{
                 "question": "Choose a carb-based addition",
-                "answer1": "Rice",
-                "answer2": "Orzo pasta",
-                "answer3": "Diced potatoes"
+                "answers": ["Rice", "Orzo pasta", "Diced potatoes"]
             },
 
             "url": "https://images.unsplash.com/photo-1607528971899-2e89e6c0ec69?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c291cHxlbnwwfDB8MHx8fDA%3D"
@@ -34,24 +28,18 @@
 
             "question1":{
                 "question": "Pick a transcendental number",
-                "answer1": "π",
-                "answer2": "The paperfolding constant",
-                "answer3": "e^a if a is algebraic and non-zero, as proven by the Lindemann-Weierstrass theorem"
+                "answers": ["π", "The paperfolding constant", "e^a if a is algebraic and non-zero, as proven by the Lindemann-Weierstrass theorem"]
             },
             "question2":{
                 "question": "Select a large number",
-                "answer1": "Rayo's number",
-                "answer2": "2^82589933, the largest known Mersenne prime",
-                "answer3": "Googol"
+                "answers": ["Rayo's number", "2^82589933, the largest known Mersenne prime", "Googol"]
             },
             "question3":{
                 "question": "Choose an evil number",
-                "answer1": "0",
-                "answer2": "108",
-                "answer3": "66"
+                "answers": ["0","108","66"]
             },
 
-            "url": ""
+            "url": "https://images.unsplash.com/photo-1529078155058-5d716f45d604?q=80&w=2768&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             "quizId": "2",
