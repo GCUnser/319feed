@@ -6,7 +6,6 @@ function loadQuizzes(myQuizzes) {
 
     // Find the element “col” in HTML
     var CardQuiz = document.getElementById("col");
-    var checkboxes=[];
     var cards=[];
 
     // Read every quiz from the array
@@ -23,24 +22,9 @@ function loadQuizzes(myQuizzes) {
         AddCardQuiz.classList.add("col");
 
         // create Bootstrap card
-        let checkbox="checkbox"+i.toString();
         let card = "card"+i.toString();
 
-        checkboxes.forEach((checkboxParam,index)=>{
-            console.log(index);
-            checkboxParam.addEventListener('change',()=> {
-                if (checkboxParam.checked){
-                    cards[index].style.display='block';
-                } else {
-                    cards[index].style.display='none';
-                }
-            });
-        });
-
         AddCardQuiz.innerHTML = `
-            <input type="checkbox" id=${checkbox} class="form-check-input" checked>
-            <label for=${checkbox} class="form-check-label">Show Image ${i}</label>
-
             <div id=${card} class="card shadow-sm">
                 <img src=${url} class="card-img-top" alt="..."></img>
                 <div class="card-body">
@@ -57,9 +41,6 @@ function loadQuizzes(myQuizzes) {
         `;
         // append new division
         CardQuiz.appendChild(AddCardQuiz);
-
-        let cbox=document.getElementById(checkbox);
-        checkboxes.push(cbox);
 
         let ccard=document.getElementById(card);
         cards.push(ccard);
