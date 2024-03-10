@@ -1,4 +1,4 @@
-fetch("./quizzes.json")
+fetch("./data.json")
 .then(response => response.json())
 .then(myQuizzes => loadQuizzes(myQuizzes));
 
