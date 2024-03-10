@@ -29,8 +29,27 @@
         },
         {
             "quizId": "1",
-            "title": "Personality:",
+            "title": "Personality: Pick your favorite number and we'll tell you what CSS selector you best embody",
             "author": "Firstname Lastname",
+
+            "question1":{
+                "question": "Pick a transcendental number",
+                "answer1": "π",
+                "answer2": "The paperfolding constant",
+                "answer3": "e^a if a is algebraic and non-zero, as proven by the Lindemann-Weierstrass theorem"
+            },
+            "question2":{
+                "question": "Select a large number",
+                "answer1": "Rayo's number",
+                "answer2": "2^82589933, the largest known Mersenne prime",
+                "answer3": "Googol"
+            },
+            "question3":{
+                "question": "Choose an evil number",
+                "answer1": "0",
+                "answer2": "108",
+                "answer3": "66"
+            },
 
             "url": ""
         },
