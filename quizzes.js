@@ -14,6 +14,7 @@ function loadQuizzes(myQuizzes) {
         let title = myQuizzes.quizzes[i].title;
         let author = myQuizzes.quizzes[i].author;
         let url = myQuizzes.quizzes[i].url;
+        let quizId = myQuizzes.quizzes[i].quizId;
 
         // create a new HTML div division
         let AddCardQuiz = document.createElement("div");
@@ -31,7 +32,7 @@ function loadQuizzes(myQuizzes) {
                     <p class="card-text"> <strong>${title}</strong><br> by ${author}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='./quiz.html'">Take the Quiz</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="onQuizClick(${quizId})">Take this Quiz</button>
                         </div>
                     </div>
                 </div>
