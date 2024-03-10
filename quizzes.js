@@ -9,11 +9,11 @@ function loadQuizzes(myQuizzes) {
     var cards=[];
 
     // Read every quiz from the array
-    for (var i = 0; i < myQuizzes.romance.length; i++) {
+    for (var i = 0; i < myQuizzes.quizzes.length; i++) {
 
-        let title = myQuizzes.romance[i].title;
-        let author = myQuizzes.romance[i].author;
-        let url = myQuizzes.romance[i].url;
+        let title = myQuizzes.quizzes[i].title;
+        let author = myQuizzes.quizzes[i].author;
+        let url = myQuizzes.quizzes[i].url;
 
         // create a new HTML div division
         let AddCardQuiz = document.createElement("div");
