@@ -46,4 +46,8 @@ function loadQuizzes(myQuizzes) {
     } // end of for
 } // end of function
 
+function onQuizClick(quizType) {
+  localStorage.setItem('selectedQuizType', quizType);
+  location.href = './quiz.html';
+}
 
