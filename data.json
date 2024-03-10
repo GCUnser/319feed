@@ -46,7 +46,48 @@
             "title": "Trivia:",
             "author": "Firstname Lastname",
 
-            "url": ""
+            "question1":{
+                "question": "Which method in the Document Object Model (DOM) can be used to make a new element?",
+                "answers": ["document.createElement()",
+                "document.newElement()",
+                "document.addElement()",
+                "document.create()"],
+                "answer": "document.createElement()"
+            },
+            "question2":{
+                "question": "How do you write a comment in JavaScript?",
+                "answers": ["<!-- This is a comment -->",
+                "// This is a comment",
+                "'This is a comment",
+                "/* This is a comment */"],
+                "answer": "// This is a comment"
+            },
+            "question3":{
+                "question": "In JavaScript, what is the result of trying to access an object property that does not exist?",
+                "answers": ["null",
+                "undefined",
+                "0",
+                "An error is thrown"],
+                "answer": "undefined"
+            },
+            "question4":{
+                "question": "Which attribute is used to specify that an input field must be filled out before submitting the form?",
+                "answers": ["placeholder",
+                "required",
+                "validate",
+                "necessary"],
+                "answer": "required"
+            },
+            "question5":{
+                "question": "How do you specify an alternative text for an image, if the image cannot be displayed?",
+                "answers": ["Using the 'alt' attribute in the <img> tag",
+                "Using the 'description' attribute in the <img> tag",
+                "Placing the text inside the <img> tag",
+                "Using the 'src' attribute in the <img> tag"],
+                "answer": "Using the 'alt' attribute in the <img> tag"
+            },
+
+            "url": "https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         }
 
         
