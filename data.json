@@ -43,8 +43,8 @@
         },
         {
             "quizId": "2",
-            "title": "Trivia:",
-            "descript": "Firstname Lastname",
+            "title": "Trivia: Can You Solve the Ultimate Web-dev Trivia Challenge?",
+            "descript": "Put your web development skills to the test with our interactive trivia challenge, and take your coding prowess to the limits!",
 
             "question1":{
                 "question": "Which method in the Document Object Model (DOM) can be used to make a new element?",
