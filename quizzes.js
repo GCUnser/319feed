@@ -12,7 +12,7 @@ function loadQuizzes(myQuizzes) {
     for (var i = 0; i < myQuizzes.quizzes.length; i++) {
 
         let title = myQuizzes.quizzes[i].title;
-        let author = myQuizzes.quizzes[i].author;
+        let descript = myQuizzes.quizzes[i].descript;
         let url = myQuizzes.quizzes[i].url;
         let quizId = myQuizzes.quizzes[i].quizId;
 
@@ -29,7 +29,7 @@ function loadQuizzes(myQuizzes) {
             <div id=${card} class="card shadow-sm">
                 <img src=${url} class="card-img-top" alt="..."></img>
                 <div class="card-body">
-                    <p class="card-text"> <strong>${title}</strong><br> by ${author}</p>
+                    <p class="card-text"> <strong>${title}</strong><br> ${descript}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="onQuizClick(${quizId})">Take this Quiz</button>

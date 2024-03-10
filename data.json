@@ -4,7 +4,7 @@
         {
             "quizId": "0",
             "title": "Romance: Make a minestrone and we'll tell you who your Javascript method soulmate is",
-            "author": "Giuseppe Mario",
+            "descript": "Mother Italy loves her web designers",
             
             "question1":{
                 "question": "Choose an animal bone-based stock",
@@ -24,7 +24,7 @@
         {
             "quizId": "1",
             "title": "Personality: Pick your favorite number and we'll tell you what CSS selector you best embody",
-            "author": "You in another timeline",
+            "descript": "01100001 01101101 01101111 01101110 01100111 00100000 01110101 01110011 ",
 
             "question1":{
                 "question": "Pick a transcendental number",
@@ -44,7 +44,7 @@
         {
             "quizId": "2",
             "title": "Trivia:",
-            "author": "Firstname Lastname",
+            "descript": "Firstname Lastname",
 
             "url": ""
         }
