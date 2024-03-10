@@ -31,7 +31,7 @@ function loadQuizzes(myQuizzes) {
                     <p class="card-text"> <strong>${title}</strong><br> by ${author}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='./htmlquiz.html'">Take the Quiz</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='./quiz.html'">Take the Quiz</button>
                         </div>
                     </div>
                 </div>
