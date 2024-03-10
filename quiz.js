@@ -6,7 +6,7 @@ function loadQuizzes(myQuizzes) {
 
     var CardTitle = document.getElementById("quizTitle")
 
-    let title = myQuizzes.quizzes[0].title;
+    let title = myQuizzes.quizzes[localStorage.getItem('selectedQuizType')].title;
 
     let AddCardTitle = document.createElement("h1");
     AddCardTitle.classList.add("quiz-heading");
