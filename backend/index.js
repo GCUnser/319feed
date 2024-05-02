@@ -39,7 +39,7 @@ app.get("/main", async (req, res) => {
   }
 });
 
-app.get("/catalog/:id", async (req, res) => {
+app.get("/main/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
     console.log("Quiz to find :", id);
