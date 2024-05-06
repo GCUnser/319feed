@@ -9,15 +9,15 @@ import "./Getabout.css";
 function App() {
   // Get catalog
   const Getcatalog = () => {
-    const [products, setProducts] = useState([]);
+    const [quizzes, setQuizzes] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
       fetch("http://127.0.0.1:4000/catalog")
         .then((response) => response.json())
         .then((data) => {
-          console.log("Show Catalog of Products :", data);
-          setProducts(data);
+          console.log("Show Catalog of Quizzes :", data);
+          setQuizzes(data);
         });
     }, []);
 
@@ -60,10 +60,10 @@ function App() {
           </header>
         </div>
         <div className="b-example-divider">
-          <h1 className="about-heading">All Products</h1>
+          <h1 className="about-heading">All Quizzes</h1>
         </div>
 
-        {products.map((el) => (
+        {quizzes.map((el) => (
           <div class="row border-top border-bottom" key={el.id}>
             <div class="row main align-items-center">
               <div class="col-2">
@@ -90,7 +90,7 @@ function App() {
 
   // Get catalog by id
   const Getcatalogid = () => {
-    const [oneProduct, setOneProduct] = useState(null);
+    const [oneQuiz, setOneQuiz] = useState(null);
     const navigate = useNavigate();
     const [id, setId] = useState("");
 
@@ -99,20 +99,20 @@ function App() {
         fetch(`http://127.0.0.1:4000/catalog/${id}`)
           .then((response) => {
             if (!response.ok) {
-              throw new Error("Product not found");
+              throw new Error("Quiz not found");
             }
             return response.json();
           })
           .then((data) => {
-            console.log("Show one product :", data);
-            setOneProduct(data);
+            console.log("Show one quiz :", data);
+            setOneQuiz(data);
           })
           .catch((error) => {
-            console.error("Error fetching product:", error);
-            setOneProduct(null);
+            console.error("Error fetching quiz:", error);
+            setOneQuiz(null);
           });
       } else {
-        setOneProduct(null);
+        setOneQuiz(null);
       }
     }, [id]);
 
@@ -155,30 +155,30 @@ function App() {
           </header>
         </div>
         <div className="b-example-divider">
-          <h1 className="about-heading">Product by ID</h1>
+          <h1 className="about-heading">Quiz by ID</h1>
         </div>
         <br />
         <input type="text" class="form-control" placeholder="Enter ID" onChange={(e) => setId(e.target.value)} />
         <br />
         <br />
 
-        {oneProduct && (
-          <div class="row border-top border-bottom" key={oneProduct.id}>
+        {oneQuiz && (
+          <div class="row border-top border-bottom" key={oneQuiz.id}>
             <div class="row main align-items-center">
               <div class="col-2">
-                <img class="img-fluid" src={oneProduct.image} width={150} />
+                <img class="img-fluid" src={oneQuiz.image} width={150} />
               </div>
               <div class="col">
-                <div class="row text-muted">{oneProduct.title}</div>
-                <div class="row">{oneProduct.category}</div>
+                <div class="row text-muted">{oneQuiz.title}</div>
+                <div class="row">{oneQuiz.category}</div>
               </div>
               <div class="col">
                 <div class="row">
-                  Rating: {oneProduct.rating.rate} ({oneProduct.rating.count} reviews)
+                  Rating: {oneQuiz.rating.rate} ({oneQuiz.rating.count} reviews)
                 </div>
               </div>
               <div class="col">
-                <div class="row">${oneProduct.price}</div>
+                <div class="row">${oneQuiz.price}</div>
               </div>
             </div>
           </div>
@@ -284,7 +284,7 @@ function App() {
           </header>
         </div>
         <div className="b-example-divider">
-          <h1 className="about-heading">Add Product</h1>
+          <h1 className="about-heading">Add Quiz</h1>
         </div>
         <br />
 
@@ -298,7 +298,7 @@ function App() {
           <input type="text" class="form-control" name="rate" value={formData.rating.rate} onChange={handleChange} placeholder="Rating Rate" required /> <input type="number" class="form-control" name="count" value={formData.rating.count} onChange={handleChange} placeholder="Rating Count" required />{" "}
           <br />
           <button type="submit" class="btn btn-primary">
-            Create Product
+            Create Quiz
           </button>
         </form>
       </div>
@@ -308,37 +308,37 @@ function App() {
   // Put update price
   const Putcatalog = () => {
     const navigate = useNavigate();
-    const [productId, setProductId] = useState("");
-    const [product, setProduct] = useState(null);
+    const [quizId, setQuizId] = useState("");
+    const [quiz, setQuiz] = useState(null);
     const [price, setPrice] = useState("");
 
     useEffect(() => {
-      if (productId) {
-        fetch(`http://127.0.0.1:4000/catalog/${productId}`)
+      if (quizId) {
+        fetch(`http://127.0.0.1:4000/catalog/${quizId}`)
           .then((response) => response.json())
           .then((data) => {
-            setProduct(data);
+            setQuiz(data);
             setPrice(data.price);
           })
           .catch((error) => {
-            console.error("Failed to fetch product:", error);
-            setProduct(null);
+            console.error("Failed to fetch quiz:", error);
+            setQuiz(null);
           });
       }
-    }, [productId]);
+    }, [quizId]);
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (!productId) {
+      if (!quizId) {
         alert("ID is required to update an item");
         return;
       }
 
-      fetch(`http://127.0.0.1:4000/catalog/${productId}`, {
+      fetch(`http://127.0.0.1:4000/catalog/${quizId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...product,
+          ...quiz,
           price: price,
         }),
       })
@@ -351,9 +351,9 @@ function App() {
           return response.json();
         })
         .then((data) => {
-          console.log("Product updated successfully:", data);
+          console.log("Quiz updated successfully:", data);
           alert("Item updated successfully!");
-          setProduct(null); // Redirect or something here? right now we clear
+          setQuiz(null); // Redirect or something here? right now we clear
         })
         .catch((error) => {
           console.error("Error updating item:", error);
@@ -400,29 +400,29 @@ function App() {
           </header>
         </div>
         <div className="b-example-divider">
-          <h1 className="about-heading">Update Price of Product</h1>
+          <h1 className="about-heading">Update Price of Quiz</h1>
         </div>
         <br />
-        <input type="text" placeholder="Enter Product ID to fetch" class="form-control" value={productId} onChange={(e) => setProductId(e.target.value)} />
+        <input type="text" placeholder="Enter Quiz ID to fetch" class="form-control" value={quizId} onChange={(e) => setQuizId(e.target.value)} />
         <br />
-        {product && (
+        {quiz && (
           <form onSubmit={handleSubmit}>
-            <div class="row border-top border-bottom" key={product.id}>
+            <div class="row border-top border-bottom" key={quiz.id}>
               <div class="row main align-items-center">
                 <div class="col-2">
-                  <img class="img-fluid" src={product.image} width={150} />
+                  <img class="img-fluid" src={quiz.image} width={150} />
                 </div>
                 <div class="col">
-                  <div class="row text-muted">{product.title}</div>
-                  <div class="row">{product.category}</div>
+                  <div class="row text-muted">{quiz.title}</div>
+                  <div class="row">{quiz.category}</div>
                 </div>
                 <div class="col">
                   <div class="row">
-                    Rating: {product.rating.rate} ({product.rating.count} reviews)
+                    Rating: {quiz.rating.rate} ({quiz.rating.count} reviews)
                   </div>
                 </div>
                 <div class="col">
-                  <div class="row">${product.price}</div>
+                  <div class="row">${quiz.price}</div>
                 </div>
               </div>
             </div>
@@ -438,31 +438,31 @@ function App() {
     );
   };
 
-  // Delete product from catalog
+  // Delete quiz from catalog
   const Deletecatalog = () => {
-    const [productId, setProductId] = useState("");
-    const [product, setProduct] = useState(null);
+    const [quizId, setQuizId] = useState("");
+    const [quiz, setQuiz] = useState(null);
     const navigate = useNavigate();
 
-    const fetchProduct = () => {
-      if (!productId) {
-        alert("Enter a product ID.");
+    const fetchQuiz = () => {
+      if (!quizId) {
+        alert("Enter a quiz ID.");
         return;
       }
 
-      fetch(`http://127.0.0.1:4000/catalog/${productId}`)
+      fetch(`http://127.0.0.1:4000/catalog/${quizId}`)
         .then((response) => response.json())
         .then((data) => {
-          setProduct(data);
+          setQuiz(data);
         })
         .catch((error) => {
-          console.error("Error fetching product:", error);
-          setProduct(null);
+          console.error("Error fetching quiz:", error);
+          setQuiz(null);
         });
     };
 
-    const deleteOneProduct = () => {
-      fetch(`http://127.0.0.1:4000/catalog/${productId}`, {
+    const deleteOneQuiz = () => {
+      fetch(`http://127.0.0.1:4000/catalog/${quizId}`, {
         method: "DELETE",
       })
         .then((response) => {
@@ -471,13 +471,13 @@ function App() {
               throw new Error(`Delete was not ok: Status: ${response.status}. Error: ${errData.error}`);
             });
           }
-          alert("Product deleted successfully!");
-          setProduct(null);
-          setProductId("");
+          alert("Quiz deleted successfully!");
+          setQuiz(null);
+          setQuizId("");
         })
         .catch((error) => {
-          console.error("Error deleting product:", error);
-          alert("Error deleting product:" + error.message);
+          console.error("Error deleting quiz:", error);
+          alert("Error deleting quiz:" + error.message);
         });
     };
 
@@ -520,39 +520,39 @@ function App() {
           </header>
         </div>
         <div className="b-example-divider">
-          <h1 className="about-heading">Delete Product</h1>
+          <h1 className="about-heading">Delete Quiz</h1>
         </div>
         <br />
-        <input type="text" placeholder="Enter Product ID to delete" value={productId} class="form-control" onChange={(e) => setProductId(e.target.value)} />
-        <button class="btn btn-dark rounded-pill px-3" onClick={fetchProduct}>
-          Fetch Product
+        <input type="text" placeholder="Enter Quiz ID to delete" value={quizId} class="form-control" onChange={(e) => setQuizId(e.target.value)} />
+        <button class="btn btn-dark rounded-pill px-3" onClick={fetchQuiz}>
+          Fetch Quiz
         </button>
         <br />
         <br />
         <br />
-        {product && (
+        {quiz && (
           <div>
-            <div class="row border-top border-bottom" key={product.id}>
+            <div class="row border-top border-bottom" key={quiz.id}>
               <div class="row main align-items-center">
                 <div class="col-2">
-                  <img class="img-fluid" src={product.image} width={150} />
+                  <img class="img-fluid" src={quiz.image} width={150} />
                 </div>
                 <div class="col">
-                  <div class="row text-muted">{product.title}</div>
-                  <div class="row">{product.category}</div>
+                  <div class="row text-muted">{quiz.title}</div>
+                  <div class="row">{quiz.category}</div>
                 </div>
                 <div class="col">
                   <div class="row">
-                    Rating: {product.rating.rate} ({product.rating.count} reviews)
+                    Rating: {quiz.rating.rate} ({quiz.rating.count} reviews)
                   </div>
                 </div>
                 <div class="col">
-                  <div class="row">${product.price}</div>
+                  <div class="row">${quiz.price}</div>
                 </div>
               </div>
             </div>
             <br />
-            <button type="button" class="btn btn-danger" onClick={deleteOneProduct}>
+            <button type="button" class="btn btn-danger" onClick={deleteOneQuiz}>
               Confirm Delete
             </button>
           </div>
@@ -613,7 +613,7 @@ function App() {
               <h5 style={{ paddingBottom: "20px", fontStyle: "italic", color: "grey" }}>April 26, 2024</h5>
               <hr class="hr hr-blurry" />
               <div className="instructors">
-                <p>In Assignment 3: MERN, we developed a MERN (MongoDB, Express, React, Nodejs) application to manage a catalog of items. Using CRUD methods, we implemented various operations on the product catalog in an organized and user-friendly interface.</p>
+                <p>In Assignment 3: MERN, we developed a MERN (MongoDB, Express, React, Nodejs) application to manage a catalog of items. Using CRUD methods, we implemented various operations on the quiz catalog in an organized and user-friendly interface.</p>
               </div>
               <hr class="hr hr-blurry" />
               <div className="team-container">
