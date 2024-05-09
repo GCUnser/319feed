@@ -1,8 +1,8 @@
 // Authors: Muralikrishna Patibandla & Gabriel Unser
-// Date: May 1st, 2024
+// Date: May 4th, 2024
 
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, NavLink, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Getabout.css'; 
 
@@ -80,34 +80,201 @@ function App() {
 
   const QuizDetail = () => {
     const [quiz, setQuiz] = useState(null);
-    const quizId = window.location.pathname.split('/').pop();
+    const [answers, setAnswers] = useState({});
+    const [submitted, setSubmitted] = useState(false);
+    const [mode, setMode] = useState("initial");
+    const navigate = useNavigate();
+    const quizId = parseInt(window.location.pathname.split("/").pop());
 
     useEffect(() => {
-      fetch(`http://localhost:4000/quizzes/${quizId}`)
-        .then(response => response.json())
-        .then(data => setQuiz(data))
-        .catch(error => console.error('Failed to fetch quiz details:', error));
+      const userToken =
+        localStorage.getItem("userToken") || generateUserToken();
+      fetch(`http://localhost:4000/quizzes/${quizId}?userToken=${userToken}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setQuiz(data.quiz);
+          setSubmitted(data.hasSubmitted);
+          const initialAnswers = {};
+          Object.keys(data.quiz)
+            .filter((key) => key.startsWith("question"))
+            .forEach((key, index) => {
+              initialAnswers[key] = data.hasSubmitted
+                ? data.answers[index].answerIndex
+                : null;
+            });
+          setAnswers(initialAnswers);
+        })
+        .catch((error) =>
+          console.error("Failed to fetch quiz details:", error)
+        );
     }, [quizId]);
 
-    if (!quiz) return <div className="container"><div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div></div>;
+    const handleAnswerChange = (questionKey, answerIndex) => {
+      setAnswers((prev) => ({
+        ...prev,
+        [questionKey]: answerIndex,
+      }));
+    };
+
+    const handleSubmitAnswers = () => {
+      if (Object.values(answers).includes(null)) {
+        alert("Please select an option for each question.");
+        return;
+      }
+
+      const userToken =
+        localStorage.getItem("userToken") || generateUserToken();
+      const formattedAnswers = Object.keys(answers).map((key) => ({
+        question: key,
+        answerIndex: answers[key],
+        answer: quiz[key].answers[answers[key]],
+      }));
+
+      const endpoint =
+        mode === "initial" ? "userdata" : `userdata/${userToken}`;
+      const method = mode === "initial" ? "POST" : "PUT";
+
+      fetch(`http://localhost:4000/${endpoint}`, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userToken, quizId, answers: formattedAnswers }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(
+            `${mode === "initial" ? "Answers submitted" : "Answers updated"}:`,
+            data
+          );
+          if (!localStorage.getItem("userToken")) {
+            localStorage.setItem("userToken", userToken);
+            sessionStorage.setItem("sessionActive", "true");
+          }
+          setSubmitted(true);
+          alert(
+            `${
+              mode === "initial"
+                ? "Answers successfully submitted!"
+                : "Answers successfully updated!"
+            }`
+          );
+        })
+        .catch((error) => {
+          console.error(
+            `Failed to ${mode === "initial" ? "submit" : "update"} answers:`,
+            error
+          );
+          alert(
+            `Failed to ${
+              mode === "initial" ? "submit" : "update"
+            } answers. Please try again.`
+          );
+        });
+    };
+
+    const handleDeleteAnswers = () => {
+      const userToken = localStorage.getItem("userToken");
+      if (!userToken) {
+        alert("No user token found, cannot delete answers.");
+        return;
+      }
+
+      fetch(`http://localhost:4000/userdata/${userToken}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            setSubmitted(false);
+            alert("Answers deleted successfully.");
+            navigate(0);
+          } else {
+            alert("Failed to delete answers.");
+          }
+        })
+        .catch((error) => {
+          console.error("Failed to delete answers:", error);
+          alert("Failed to delete answers. Please try again.");
+        });
+    };
+
+    const handleRedoAnswers = () => {
+      setSubmitted(false);
+      setMode("redo");
+    };
+
+    const generateUserToken = () => {
+      return (
+        Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15)
+      );
+    };
+
+    if (!quiz)
+      return (
+        <div className="container">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      );
 
     return (
       <div className="container mt-3">
         <h1 className="display-4">{quiz.title}</h1>
         <p className="lead">{quiz.descript}</p>
-        {Object.keys(quiz).filter(key => key.startsWith('question')).map((key, index) => (
-          <div key={index} className="mb-4">
-            <h5>{quiz[key].question}</h5>
-            {quiz[key].answers.map((answer, idx) => (
-              <div key={idx} className="form-check">
-                <input className="form-check-input" type="radio" name={`question${index}`} id={`answer${index}${idx}`} />
-                <label className="form-check-label" htmlFor={`answer${index}${idx}`}>{answer}</label>
-              </div>
-            ))}
-            <img src={quiz[key].imgUrl} className="img-fluid rounded mt-2 card-img-top" />
-          </div>
-        ))}
-        <button className="btn btn-success">Submit Answers</button>
+        {Object.keys(quiz)
+          .filter((key) => key.startsWith("question"))
+          .map((key, index) => (
+            <div key={index} className="mb-4">
+              <h5>{quiz[key].question}</h5>
+              {submitted ? (
+                <p>Your Answer: {quiz[key].answers[answers[key]]}</p>
+              ) : (
+                quiz[key].answers.map((answer, idx) => (
+                  <div key={idx} className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name={key}
+                      id={`answer-${key}-${idx}`}
+                      checked={answers[key] === idx}
+                      onChange={() => handleAnswerChange(key, idx)}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor={`answer-${key}-${idx}`}
+                    >
+                      {answer}
+                    </label>
+                  </div>
+                ))
+              )}
+              <img
+                src={quiz[key].imgUrl}
+                alt={`Question ${index + 1}`}
+                className="img-fluid rounded mt-2 card-img-top"
+              />
+              <hr class="hr hr-blurry" />
+            </div>
+          ))}
+        {submitted ? (
+          <>
+            <button className="btn btn-danger" onClick={handleDeleteAnswers}>
+              Delete Answers
+            </button>{" "}
+            <button className="btn btn-info" onClick={handleRedoAnswers}>
+              Redo Quiz
+            </button>
+          </>
+        ) : (
+          <button className="btn btn-success" onClick={handleSubmitAnswers}>
+            {mode === "initial" ? "Submit Answers" : "Update Answers"}
+          </button>
+        )}
       </div>
     );
   };
