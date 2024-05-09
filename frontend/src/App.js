@@ -50,7 +50,7 @@ function App() {
 
   const QuizList = () => {
     const [quizzes, setQuizzes] = useState([]);
-
+  
     useEffect(() => {
       fetch('http://localhost:4000/quizzes')
         .then(response => response.json())
@@ -60,7 +60,7 @@ function App() {
         })
         .catch(error => console.error('Failed to fetch quizzes:', error));
     }, []);
-
+  
     return (
       <div className="container mt-3">
         <h1 className="display-4">Quiz Catalog</h1>
@@ -104,7 +104,7 @@ function App() {
                 <label className="form-check-label" htmlFor={`answer${index}${idx}`}>{answer}</label>
               </div>
             ))}
-            <img src={quiz[key].imgUrl} alt={`Question ${index + 1}`} className="img-fluid rounded mt-2" />
+            <img src={quiz[key].imgUrl} className="img-fluid rounded mt-2 card-img-top" />
           </div>
         ))}
         <button className="btn btn-success">Submit Answers</button>
@@ -119,7 +119,7 @@ function App() {
           <main className="about-body">
             <h1 style={{ paddingBottom: "10px" }}>ComS 319 - Construction of User Interfaces</h1>
             <h2>Midterm Assignment: 319Feed</h2>
-            <h5 style={{ paddingBottom: "20px", fontStyle: "italic", color: "grey" }}>March 09, 2024</h5>
+            <h5 style={{ paddingBottom: "20px", fontStyle: "italic", color: "grey" }}>May 04, 2024</h5>
             <div className="team-container">
               <div className="team-member left">
                 <h2>Muralikrishna Patibandla</h2>
@@ -135,8 +135,9 @@ function App() {
             </div>
 
             <div className="instructors">
-              <h2>Professor:</h2>
-              <h3>Dr. Ali Jannesari, Ph.D.</h3>
+              <h2>Professors:</h2>
+              <h3>Dr. Abraham N. Aldaco Gastelum</h3><p><a href="mailto:aaldaco@iastate.edu">aaldaco@iastate.edu</a></p>
+              <h3>Dr. Ali Jannesari</h3><p><a href="mailto:jannesar@iastate.edu">jannesar@iastate.edu</a></p>
             </div>
           </main>
         </div>
