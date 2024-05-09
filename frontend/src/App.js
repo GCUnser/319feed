@@ -1,10 +1,10 @@
 // Authors: Muralikrishna Patibandla & Gabriel Unser
 // Date: May 4th, 2024
 
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, NavLink, useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import './Getabout.css'; 
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, Link, NavLink } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
+import "./Getabout.css";
 
 function App() {
   const Header = () => {
@@ -13,16 +13,18 @@ function App() {
         <div className="container">
           <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <NavLink to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
-              <span className="fs-4" style={{ color: 'red' }}><strong>319Feed</strong></span>
+              <span className="fs-4" style={{ color: "red" }}>
+                <strong>319Feed</strong>
+              </span>
             </NavLink>
             <ul className="nav nav-pills">
               <li className="nav-item">
-                <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                <NavLink to="/" className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
                   Quizzes
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                <NavLink to="/about" className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
                   About
                 </NavLink>
               </li>
@@ -42,7 +44,9 @@ function App() {
           </p>
           <p className="mb-1">&copy; 319Feed</p>
           <p className="mb-1">By Gabriel Unser and Muralikrishna Patibandla</p>
-          <p className="mb-0">Learn more about us <NavLink to="/about">here</NavLink>.</p>
+          <p className="mb-0">
+            Learn more about us <NavLink to="/about">here</NavLink>.
+          </p>
         </div>
       </footer>
     );
@@ -50,30 +54,38 @@ function App() {
 
   const QuizList = () => {
     const [quizzes, setQuizzes] = useState([]);
-  
+
     useEffect(() => {
-      fetch('http://localhost:4000/quizzes')
-        .then(response => response.json())
-        .then(data => {
-          console.log('Quizzes:', data);
+      fetch("http://localhost:4000/quizzes")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Quizzes:", data);
           setQuizzes(data);
         })
-        .catch(error => console.error('Failed to fetch quizzes:', error));
+        .catch((error) => console.error("Failed to fetch quizzes:", error));
     }, []);
-  
+
     return (
       <div className="container mt-3">
         <h1 className="display-4">Quiz Catalog</h1>
-        {quizzes.map((quiz) => (
-          <div key={quiz.quizId} className="card my-3 shadow">
-            <img src={quiz.url} className="card-img-top" alt="Quiz Cover" />
-            <div className="card-body">
-              <h5 className="card-title">{quiz.title}</h5>
-              <p className="card-text">{quiz.descript}</p>
-              <Link to={`/quizzes/${quiz.quizId}`} className="btn btn-primary">Take this Quiz</Link>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          {quizzes.map((quiz) => (
+            <div className="col">
+              <div key={quiz.quizId} className="card h-100">
+                <img src={quiz.url} className="card-img-top" alt="Quiz Cover" />
+                <div className="card-body">
+                  <h5 className="card-title">{quiz.title}</h5>
+                  <p className="card-text">{quiz.descript}</p>
+                </div>
+                <div className="card-footer">
+                  <Link to={`/quizzes/${quiz.quizId}`} className="btn btn-primary">
+                    Take this Quiz
+                  </Link>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   };
@@ -291,20 +303,30 @@ function App() {
               <div className="team-member left">
                 <h2>Muralikrishna Patibandla</h2>
                 <p style={{ fontStyle: "italic", color: "grey" }}>Computer Engineering</p>
-                <p><a href="mailto:muralip@iastate.edu">muralip@iastate.edu</a></p>
+                <p>
+                  <a href="mailto:muralip@iastate.edu">muralip@iastate.edu</a>
+                </p>
               </div>
 
               <div className="team-member right">
                 <h2>Gabriel Unser</h2>
                 <p style={{ fontStyle: "italic", color: "grey" }}>Computer Science</p>
-                <p><a href="mailto:gunser@iastate.edu">gunser@iastate.edu</a></p>
+                <p>
+                  <a href="mailto:gunser@iastate.edu">gunser@iastate.edu</a>
+                </p>
               </div>
             </div>
 
             <div className="instructors">
               <h2>Professors:</h2>
-              <h3>Dr. Abraham N. Aldaco Gastelum</h3><p><a href="mailto:aaldaco@iastate.edu">aaldaco@iastate.edu</a></p>
-              <h3>Dr. Ali Jannesari</h3><p><a href="mailto:jannesar@iastate.edu">jannesar@iastate.edu</a></p>
+              <h3>Dr. Abraham N. Aldaco Gastelum</h3>
+              <p>
+                <a href="mailto:aaldaco@iastate.edu">aaldaco@iastate.edu</a>
+              </p>
+              <h3>Dr. Ali Jannesari</h3>
+              <p>
+                <a href="mailto:jannesar@iastate.edu">jannesar@iastate.edu</a>
+              </p>
             </div>
           </main>
         </div>
